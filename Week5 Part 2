@@ -108,7 +108,7 @@ def update_output_container(selected_statistics, input_year):
                 title='Advertising Expenditure by Vehicle Type'))
 
 # Plot 4 bar chart for the effect of unemployment rate on vehicle type and sales
-        unemp_data = recession_data.groupby('Vehicle_Type','unemployment_rate')['Automobile_Sales'].mean().reset_index()                           
+        unemp_data = recession_data.groupby('unemployment_rate','Vehicle_Type')['Automobile_Sales'].mean().reset_index()                           
         R_chart4  = dcc.Graph(
             figure=px.bar(unemp_data,
                 x='unemployment_rate',
@@ -160,7 +160,7 @@ def update_output_container(selected_statistics, input_year):
 #TASK 2.6: Returning the graphs for displaying Yearly data
         return [
                 html.Div(className='chart-item', children=[html.Div(children=Y_chart1),html.Div(children=Y_chart2)],style={'display': 'flex'}),
-                html.Div(className='chart-item', children=[html.Div(childfen=Y_chart3),html.Div(children=Y_chart4)],style={'display': 'flex'})
+                html.Div(className='chart-item', children=[html.Div(children=Y_chart3),html.Div(children=Y_chart4)],style={'display': 'flex'})
                 ]
         
     else:
